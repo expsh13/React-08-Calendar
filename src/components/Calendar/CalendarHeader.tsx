@@ -5,6 +5,18 @@ type PropsType = {
 
 export const CalendarHeader = (props: PropsType) => {
   const { month, onMonthChange } = props;
+
+  const handleAddMonth = () => {
+    const newMonth = new Date(month);
+    newMonth.setMonth(month.getMonth() + 1);
+    onMonthChange(newMonth);
+  };
+  const handleSubtractMonth = () => {
+    const newMonth = new Date(month);
+    newMonth.setMonth(month.getMonth() - 1);
+    onMonthChange(newMonth);
+  };
+
   return (
     <div className="flex gap-4 items-center mt-3 mb-3">
       <h1 className="text-2xl font-bold">カレンダー</h1>
@@ -15,8 +27,8 @@ export const CalendarHeader = (props: PropsType) => {
         今日
       </button>
       <div>
-        <button>＜</button>
-        <button>＞</button>
+        <button onClick={handleSubtractMonth}>＜</button>
+        <button onClick={handleAddMonth}>＞</button>
       </div>
       <p>
         {month.getFullYear()}年{month.getMonth() + 1}月
