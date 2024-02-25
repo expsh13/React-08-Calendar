@@ -560,6 +560,10 @@ video {
   width: 91.666667%;
 }
 
+.items-center {
+  align-items: center;
+}
+
 .gap-3 {
   gap: 0.75rem;
 }
