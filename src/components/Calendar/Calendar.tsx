@@ -3,7 +3,7 @@ export const Calendar = () => {
     <div className="flex flex-wrap">
       <div className="w-32 h-32 border">
         <p className="text-center text-red-600">日</p>
-        <p className="text-center">1</p>
+        <p className="text-center text-gray-500">31</p>
       </div>
       <div className="w-32 h-32 border">
         <p className="text-center">月</p>
