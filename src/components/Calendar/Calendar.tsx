@@ -9,15 +9,19 @@ export const Calendar = (props: PropsType) => {
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1;
 
-  const startDay = new Date(currentYear, currentMonth - 1, 1).getDay(); // 月の最初の日の曜日を取得
-  const endDay = new Date(currentYear, currentMonth, 0).getDay(); // 月の末日の曜日
-  const lastMonthendEndDate = new Date(
-    currentYear,
-    currentMonth - 1,
-    0
-  ).getDate(); // 前月の末日
+  const currentMonthStartDate = new Date(currentYear, currentMonth - 1, 1); // 月の最初の日
+  const currentMonthEndDate = new Date(currentYear, currentMonth, 0); // 月の最終日
+
+  const startDay = currentMonthStartDate.getDay(); // 月の最初の日の曜日を取得
+  const endDay = currentMonthEndDate.getDay(); // 月の最終日の曜日
+  // const lastMonthendEndDate = new Date(
+  //   currentYear,
+  //   currentMonth - 1,
+  //   0
+  // ).getDate(); // 前月の最終日
 
   const lastMonthRange = weeks.length - (weeks.length - startDay);
+  const currentMonthRange = currentMonthEndDate - currentMonthStartDate;
   const nextMonthRange = weeks.length - endDay;
 
   return (
