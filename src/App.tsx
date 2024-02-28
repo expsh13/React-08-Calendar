@@ -10,7 +10,7 @@ export const App = () => {
         currentDate={currentDate}
         onMonthChange={(date: Date) => setCurrentDate(date)}
       />
-      <Calendar />
+      <Calendar currentDate={currentDate} />
     </div>
   );
 };

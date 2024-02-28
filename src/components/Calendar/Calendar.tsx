@@ -1,4 +1,22 @@
-export const Calendar = () => {
+type PropsType = {
+  currentDate: Date;
+};
+
+const weeks = ["日", "月", "火", "水", "木", "金", "土"];
+
+export const Calendar = (props: PropsType) => {
+  const { currentDate } = props;
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1;
+
+  const startDay = new Date(currentYear, currentMonth - 1, 1).getDay(); // 月の最初の日の曜日を取得
+  const endDate = new Date(currentYear, currentMonth, 0).getDate(); // 月の末日
+  const lastMonthendEndDate = new Date(
+    currentYear,
+    currentMonth - 1,
+    0
+  ).getDate(); // 前月の末日
+
   return (
     <div className="flex flex-wrap">
       <div className="w-32 h-32 border">
