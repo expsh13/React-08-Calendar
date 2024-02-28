@@ -1,19 +1,19 @@
 type PropsType = {
-  month: Date;
-  onMonthChange: (month: Date) => void;
+  currentDate: Date;
+  onMonthChange: (currentDate: Date) => void;
 };
 
 export const CalendarHeader = (props: PropsType) => {
-  const { month, onMonthChange } = props;
+  const { currentDate, onMonthChange } = props;
 
   const handleAddMonth = () => {
-    const newMonth = new Date(month);
-    newMonth.setMonth(month.getMonth() + 1);
+    const newMonth = new Date(currentDate);
+    newMonth.setMonth(currentDate.getMonth() + 1);
     onMonthChange(newMonth);
   };
   const handleSubtractMonth = () => {
-    const newMonth = new Date(month);
-    newMonth.setMonth(month.getMonth() - 1);
+    const newMonth = new Date(currentDate);
+    newMonth.setMonth(currentDate.getMonth() - 1);
     onMonthChange(newMonth);
   };
 
@@ -35,7 +35,7 @@ export const CalendarHeader = (props: PropsType) => {
         </button>
       </div>
       <p>
-        {month.getFullYear()}年{month.getMonth() + 1}月
+        {currentDate.getFullYear()}年{currentDate.getMonth() + 1}月
       </p>
     </div>
   );
