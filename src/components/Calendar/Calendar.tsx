@@ -4,8 +4,7 @@ type PropsType = {
 
 const weeks = ["日", "月", "火", "水", "木", "金", "土"];
 
-export const Calendar = (props: PropsType) => {
-  const { currentDate } = props;
+const currentDateRange = (currentDate: Date) => {
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1;
 
@@ -14,15 +13,14 @@ export const Calendar = (props: PropsType) => {
 
   const startDay = currentMonthStartDate.getDay(); // 月の最初の日の曜日を取得
   const endDay = currentMonthEndDate.getDay(); // 月の最終日の曜日
-  // const lastMonthendEndDate = new Date(
-  //   currentYear,
-  //   currentMonth - 1,
-  //   0
-  // ).getDate(); // 前月の最終日
 
   const lastMonthRange = weeks.length - (weeks.length - startDay);
   const currentMonthRange = currentMonthEndDate - currentMonthStartDate;
   const nextMonthRange = weeks.length - endDay;
+};
+
+export const Calendar = (props: PropsType) => {
+  const { currentDate } = props;
 
   return (
     <div className="flex flex-wrap">
