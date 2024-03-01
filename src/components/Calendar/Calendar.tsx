@@ -14,13 +14,18 @@ const currentDateRange = (currentDate: Date): Date[] => {
   const currentMonthStartDay = currentMonthStartDate.getDay(); // 月の最初の日の曜日を取得
   const currentMonthEndDay = currentMonthEndDate.getDay(); // 月の最終日の曜日
 
-  const lastMonthRangeLength =
-    weeks.length - (weeks.length - currentMonthStartDay);
+  const lastMonthRange = weeks.length - (weeks.length - currentMonthStartDay);
   const currentMonthRange = Math.floor(
     (currentMonthEndDate.getTime() - currentMonthStartDate.getTime()) /
       (1000 * 60 * 60 * 24)
   );
-  const nextMonthRangeLength = weeks.length - currentMonthEndDay;
+  const nextMonthRange = weeks.length - currentMonthEndDay;
+  const dateArray: Date[] = [];
+  for (let i = 1; i < lastMonthRange + 1; i++) {
+    const newDate = new Date(currentMonthStartDate);
+    newDate.setDate(newDate.getDate() - (lastMonthRange - i));
+    dateArray.push();
+  }
 };
 
 export const Calendar = (props: PropsType) => {
