@@ -4,19 +4,23 @@ type PropsType = {
 
 const weeks = ["日", "月", "火", "水", "木", "金", "土"];
 
-const currentDateRange = (currentDate: Date) => {
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1;
+const currentDateRange = (currentDate: Date): Date[] => {
+  const currentMonthStartDate = new Date(currentDate); // 月の最初の日
+  currentMonthStartDate.setDate(1);
+  const currentMonthEndDate = new Date(currentDate); // 月の最終日
+  currentMonthEndDate.setMonth(currentDate.getMonth() + 1);
+  currentMonthEndDate.setDate(0);
 
-  const currentMonthStartDate = new Date(currentYear, currentMonth - 1, 1); // 月の最初の日
-  const currentMonthEndDate = new Date(currentYear, currentMonth, 0); // 月の最終日
+  const currentMonthStartDay = currentMonthStartDate.getDay(); // 月の最初の日の曜日を取得
+  const currentMonthEndDay = currentMonthEndDate.getDay(); // 月の最終日の曜日
 
-  const startDay = currentMonthStartDate.getDay(); // 月の最初の日の曜日を取得
-  const endDay = currentMonthEndDate.getDay(); // 月の最終日の曜日
-
-  const lastMonthRange = weeks.length - (weeks.length - startDay);
-  const currentMonthRange = currentMonthEndDate - currentMonthStartDate;
-  const nextMonthRange = weeks.length - endDay;
+  const lastMonthRangeLength =
+    weeks.length - (weeks.length - currentMonthStartDay);
+  const currentMonthRange = Math.floor(
+    (currentMonthEndDate.getTime() - currentMonthStartDate.getTime()) /
+      (1000 * 60 * 60 * 24)
+  );
+  const nextMonthRangeLength = weeks.length - currentMonthEndDay;
 };
 
 export const Calendar = (props: PropsType) => {
