@@ -16,7 +16,7 @@ export const dateStyle = (currentDate: Date, itemDate: Date): string => {
   today.setMilliseconds(0);
 
   if (today.getTime() === itemDate.getTime()) {
-    return "m-auto text-white flex justify-center bg-blue-700 rounded-full w-6 h-6";
+    return "text-white flex justify-center bg-blue-700 rounded-full w-6 h-6";
   } else if (currentDate.getMonth() === itemDate.getMonth()) {
     return "text-center";
   } else {
