@@ -28,7 +28,6 @@ export const currentDateRange = (currentDate: Date): Date[] => {
   const dateArray: Date[] = [calendarStartDate];
 
   while (dateArray.slice(-1)[0].getTime() < calendarEndDate.getTime()) {
-    // console.log(dateArray.slice(-1)[0], calendarEndDate);
     const newDate = new Date(dateArray.slice(-1)[0]);
     newDate.setDate(dateArray.slice(-1)[0].getDate() + 1);
     dateArray.push(newDate);
